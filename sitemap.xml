@@ -7,7 +7,7 @@
     <!-- Ana sayfa -->
     <url>
         <loc>https://yusufdgn.com/</loc>
-        <lastmod>2024-12-19T12:00:00+00:00</lastmod>
+        <lastmod>2025-07-05T12:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,7 +15,7 @@
     <!-- Hakkımda bölümü -->
     <url>
         <loc>https://yusufdgn.com/#about</loc>
-        <lastmod>2024-12-19T12:00:00+00:00</lastmod>
+        <lastmod>2025-07-05T12:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -23,7 +23,7 @@
     <!-- İletişim bölümü -->
     <url>
         <loc>https://yusufdgn.com/#contact</loc>
-        <lastmod>2024-12-19T12:00:00+00:00</lastmod>
+        <lastmod>2025-07-05T12:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -31,7 +31,7 @@
     <!-- Manifest dosyası -->
     <url>
         <loc>https://yusufdgn.com/manifest.json</loc>
-        <lastmod>2024-12-19T12:00:00+00:00</lastmod>
+        <lastmod>2025-07-05T12:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -39,7 +39,7 @@
     <!-- Robots.txt -->
     <url>
         <loc>https://yusufdgn.com/robots.txt</loc>
-        <lastmod>2024-12-19T12:00:00+00:00</lastmod>
+        <lastmod>2025-07-05T12:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
     </url>
