@@ -165,6 +165,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 addTerminalOutput('about.txt  contact.json  portfolio.md  README.md');
                 break;
                 
+            // Easter Eggs
+            case 'rm -rfv *':
+            case 'rm -rf *':
+            case 'rm -rfv':
+                addTerminalOutput('Dosyalar siliniyor...');
+                addTerminalOutput('rm: about.txt... silindi');
+                addTerminalOutput('rm: contact.json... silindi');
+                addTerminalOutput('rm: portfolio.md... silindi');
+                addTerminalOutput('rm: README.md... silindi');
+                addTerminalOutput('rm: sistem dosyaları... silindi');
+                addTerminalOutput('rm: /bin/bash... silindi');
+                addTerminalOutput('rm: /etc/passwd... silindi');
+                addTerminalOutput('');
+                setTimeout(() => {
+                    show403Forbidden();
+                }, 2000);
+                break;
+                
+            case 'reboot':
+                addTerminalOutput('Sistem yeniden başlatılıyor...');
+                setTimeout(() => {
+                    ubuntuBootSequence();
+                }, 1000);
+                break;
+                
+            case 'shutdown':
+                addTerminalOutput('Sistem kapatılıyor...');
+                setTimeout(() => {
+                    ubuntuShutdownSequence();
+                }, 1000);
+                break;
+
             default:
                 addTerminalOutput(`Komut bulunamadı: ${command}`);
                 addTerminalOutput('Mevcut komutları görmek için "help" yazın.');
@@ -416,4 +448,478 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Easter Egg Functions
+    function show403Forbidden() {
+        // Hide all content
+        document.querySelectorAll('body > *').forEach(el => {
+            if (el.id !== 'forbidden-screen') {
+                el.style.display = 'none';
+            }
+        });
+
+        // Create 403 Forbidden screen
+        const forbiddenScreen = document.createElement('div');
+        forbiddenScreen.id = 'forbidden-screen';
+        forbiddenScreen.innerHTML = `
+            <div class="forbidden-content">
+                <div class="forbidden-code">403</div>
+                <div class="forbidden-title">FORBIDDEN</div>
+                <div class="forbidden-message">
+                    <p>Access Denied</p>
+                    <p>You don't have permission to access this resource.</p>
+                </div>
+                <div class="forbidden-details">
+                    <p>Error occurred after executing: <code>rm -rfv *</code></p>
+                    <p>All files have been permanently deleted.</p>
+                    <p class="server-info">nginx/1.18.0 (Ubuntu)</p>
+                </div>
+            </div>
+        `;
+
+        // Add CSS styles
+        const forbiddenStyle = document.createElement('style');
+        forbiddenStyle.textContent = `
+            #forbidden-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                font-family: 'JetBrains Mono', monospace;
+            }
+
+            .forbidden-content {
+                text-align: center;
+                max-width: 600px;
+                padding: 2rem;
+            }
+
+            .forbidden-code {
+                font-size: 8rem;
+                font-weight: bold;
+                color: #ff4444;
+                margin-bottom: 1rem;
+                text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+                animation: pulse 2s infinite;
+            }
+
+            .forbidden-title {
+                font-size: 2.5rem;
+                font-weight: bold;
+                margin-bottom: 2rem;
+                color: #ff4444;
+                letter-spacing: 0.2em;
+            }
+
+            .forbidden-message {
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .forbidden-message p {
+                margin: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+
+            .hint {
+                background: rgba(255, 255, 0, 0.1);
+                border: 1px solid rgba(255, 255, 0, 0.3);
+                padding: 1rem;
+                border-radius: 8px;
+                margin-top: 1.5rem !important;
+                color: #ffff00;
+            }
+
+            .forbidden-details {
+                font-size: 0.9rem;
+                color: #888;
+                margin-top: 2rem;
+                padding-top: 2rem;
+                border-top: 1px solid #333;
+            }
+
+            .forbidden-details p {
+                margin: 0.5rem 0;
+            }
+
+            .forbidden-details code {
+                background: #2a2a2a;
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+                color: #ff6b6b;
+            }
+
+            .server-info {
+                margin-top: 1rem;
+                font-size: 0.8rem;
+                color: #666;
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(forbiddenStyle);
+        document.body.appendChild(forbiddenScreen);
+    }
+
+        function restore403Forbidden() {
+        // This function is no longer used directly
+        // reboot command now always calls ubuntuBootSequence()
+        ubuntuBootSequence();
+    }
+
+    // Ubuntu Boot Sequence
+    function ubuntuBootSequence() {
+        // Hide all content first
+        document.querySelectorAll('body > *').forEach(el => {
+            if (el.id !== 'boot-screen') {
+                el.style.display = 'none';
+            }
+        });
+
+        // Create boot screen
+        const bootScreen = document.createElement('div');
+        bootScreen.id = 'boot-screen';
+        bootScreen.innerHTML = `
+            <div class="boot-content">
+                <div class="boot-output"></div>
+            </div>
+        `;
+
+        // Add boot screen styles
+        const bootStyle = document.createElement('style');
+        bootStyle.textContent = `
+            #boot-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                color: #fff;
+                font-family: 'JetBrains Mono', monospace;
+                z-index: 9999;
+                overflow: hidden;
+            }
+
+            .boot-content {
+                padding: 1rem;
+                height: 100%;
+                overflow-y: auto;
+            }
+
+            .boot-output {
+                white-space: pre-wrap;
+                font-size: 0.9rem;
+                line-height: 1.2;
+            }
+
+            .boot-line {
+                margin: 0.1rem 0;
+            }
+
+            .boot-ok {
+                color: #00ff00;
+            }
+
+            .boot-info {
+                color: #87ceeb;
+            }
+
+            .boot-warn {
+                color: #ffaa00;
+            }
+        `;
+        document.head.appendChild(bootStyle);
+        document.body.appendChild(bootScreen);
+
+        const bootOutput = bootScreen.querySelector('.boot-output');
+
+        // Boot sequence messages
+        const bootMessages = [
+            { text: 'GRUB loading...', delay: 500, class: 'boot-info' },
+            { text: 'Booting Ubuntu 22.04.3 LTS', delay: 300, class: 'boot-info' },
+            { text: '', delay: 200 },
+            { text: '[    0.000000] Linux version 6.2.0-26-generic', delay: 100 },
+            { text: '[    0.000000] Command line: BOOT_IMAGE=/vmlinuz root=UUID=...', delay: 50 },
+            { text: '[    0.000000] KERNEL supported cpus:', delay: 50 },
+            { text: '[    0.000000]   Intel GenuineIntel', delay: 50 },
+            { text: '[    0.000000]   AMD AuthenticAMD', delay: 50 },
+            { text: '[    0.001000] DMI: yusufdgn/profile v1.0', delay: 100 },
+            { text: '[    0.002000] Memory: 16384M available', delay: 100 },
+            { text: '[    0.010000] CPU: AMD Ryzen 9 processor detected', delay: 150 },
+            { text: '[    0.050000] PCI: Using configuration type 1', delay: 100 },
+            { text: '[    0.100000] Setting up USB controllers...', delay: 150 },
+            { text: '[    0.200000] Loading initial ramdisk...', delay: 200 },
+            { text: '[    0.500000] Mounting root filesystem...', delay: 300 },
+            { text: '[    1.000000] Starting systemd...', delay: 400, class: 'boot-info' },
+            { text: '', delay: 300 },
+            { text: '[  OK  ] Reached target Swap', delay: 100, class: 'boot-ok' },
+            { text: '[  OK  ] Reached target Local File Systems', delay: 100, class: 'boot-ok' },
+            { text: '[  OK  ] Started systemd-networkd', delay: 150, class: 'boot-ok' },
+            { text: '[  OK  ] Started Network Name Resolution', delay: 100, class: 'boot-ok' },
+            { text: '[  OK  ] Started OpenSSH server daemon', delay: 200, class: 'boot-ok' },
+            { text: '[  OK  ] Started Docker Application Container Engine', delay: 150, class: 'boot-ok' },
+            { text: '[  OK  ] Started PostgreSQL database server', delay: 100, class: 'boot-ok' },
+            { text: '[  OK  ] Started Redis persistent key-value database', delay: 100, class: 'boot-ok' },
+            { text: '[  OK  ] Started Node.js application server', delay: 150, class: 'boot-ok' },
+            { text: '[  OK  ] Reached target Multi-User System', delay: 200, class: 'boot-ok' },
+            { text: '[  OK  ] Reached target Graphical Interface', delay: 150, class: 'boot-ok' },
+            { text: '', delay: 500 },
+            { text: 'Ubuntu 22.04.3 LTS yusufdgn-profile tty1', delay: 300, class: 'boot-info' },
+            { text: '', delay: 200 },
+            { text: 'yusufdgn-profile login: yusuf', delay: 800 },
+            { text: 'Password: ********', delay: 600 },
+            { text: '', delay: 400 },
+            { text: 'Last login: ' + new Date().toLocaleString('en-US', { 
+                weekday: 'short', 
+                month: 'short', 
+                day: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                timeZone: 'Europe/Istanbul' 
+            }) + ' +03 on tty1', delay: 300, class: 'boot-info' },
+            { text: '', delay: 200 },
+            { text: 'Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 6.2.0-26-generic x86_64)', delay: 300, class: 'boot-info' },
+            { text: '', delay: 200 },
+            { text: ' * Documentation:  https://help.ubuntu.com', delay: 100, class: 'boot-info' },
+            { text: ' * Management:     https://landscape.canonical.com', delay: 100, class: 'boot-info' },
+            { text: ' * Support:        https://ubuntu.com/advantage', delay: 100, class: 'boot-info' },
+            { text: '', delay: 300 },
+            { text: 'System information as of ' + new Date().toISOString().split('T')[0], delay: 200, class: 'boot-info' },
+            { text: '', delay: 100 },
+            { text: '  System load:  0.08              Processes:             287', delay: 100 },
+            { text: '  Usage of /:   42.3% of 50.00GB  Users logged in:       1', delay: 100 },
+            { text: '  Memory usage: 23%               IPv4 address for eth0: 192.168.1.100', delay: 100 },
+            { text: '  Swap usage:   0%', delay: 100 },
+            { text: '', delay: 500 },
+            { text: '🚀 yusufdgn production environment ready!', delay: 300, class: 'boot-ok' },
+            { text: '💻 Profile system online!', delay: 200, class: 'boot-ok' },
+            { text: '', delay: 400 },
+            { text: 'yusuf@yusufdgn-profile:~$ ', delay: 500, class: 'boot-info' }
+        ];
+
+        let messageIndex = 0;
+        let totalDelay = 0;
+
+        function showNextMessage() {
+            if (messageIndex < bootMessages.length) {
+                const message = bootMessages[messageIndex];
+                totalDelay += message.delay;
+                
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = `boot-line ${message.class || ''}`;
+                    line.textContent = message.text;
+                    bootOutput.appendChild(line);
+                    
+                    // Auto scroll
+                    bootOutput.scrollTop = bootOutput.scrollHeight;
+                    
+                    messageIndex++;
+                    showNextMessage();
+                }, message.delay);
+            } else {
+                // Boot complete, return to terminal
+                setTimeout(() => {
+                    finishBoot();
+                }, 1000);
+            }
+        }
+
+        showNextMessage();
+    }
+
+    function finishBoot() {
+        // Remove boot screen
+        const bootScreen = document.getElementById('boot-screen');
+        if (bootScreen) {
+            bootScreen.remove();
+        }
+
+        // Remove forbidden screen if exists
+        const forbiddenScreen = document.getElementById('forbidden-screen');
+        if (forbiddenScreen) {
+            forbiddenScreen.remove();
+        }
+
+        // Remove shutdown screen if exists
+        const shutdownScreen = document.getElementById('shutdown-screen');
+        if (shutdownScreen) {
+            shutdownScreen.remove();
+        }
+
+        // Show all content again
+        document.querySelectorAll('body > *').forEach(el => {
+            el.style.display = '';
+        });
+
+        // Clear terminal and show boot complete message
+        setTimeout(() => {
+            const terminalContent = document.querySelector('.terminal-content');
+            if (terminalContent) {
+                terminalContent.innerHTML = '';
+                addTerminalOutput('🔄 Sistem başarıyla yeniden başlatıldı!');
+                addTerminalOutput('');
+                addTerminalOutput('💻 Ubuntu 22.04.3 LTS - Profile Edition');
+                addTerminalOutput('🚀 yusufdgn production environment ready!');
+                addTerminalOutput('');
+                addTerminalOutput('Hoş geldin tekrar, Yusuf! 👋');
+                addTerminalOutput('');
+                addTerminalOutput('Komutları görmek için "help" yazın.');
+                addTerminalOutput('');
+            }
+        }, 100);
+    }
+
+    // Ubuntu Shutdown Sequence
+    function ubuntuShutdownSequence() {
+        // Hide all content first
+        document.querySelectorAll('body > *').forEach(el => {
+            if (el.id !== 'shutdown-screen') {
+                el.style.display = 'none';
+            }
+        });
+
+        // Create shutdown screen
+        const shutdownScreen = document.createElement('div');
+        shutdownScreen.id = 'shutdown-screen';
+        shutdownScreen.innerHTML = `
+            <div class="shutdown-content">
+                <div class="shutdown-output"></div>
+            </div>
+        `;
+
+        // Add shutdown screen styles
+        const shutdownStyle = document.createElement('style');
+        shutdownStyle.textContent = `
+            #shutdown-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                color: #fff;
+                font-family: 'JetBrains Mono', monospace;
+                z-index: 9999;
+                overflow: hidden;
+            }
+
+            .shutdown-content {
+                padding: 1rem;
+                height: 100%;
+                overflow-y: auto;
+            }
+
+            .shutdown-output {
+                white-space: pre-wrap;
+                font-size: 0.9rem;
+                line-height: 1.2;
+            }
+
+            .shutdown-line {
+                margin: 0.1rem 0;
+            }
+
+            .shutdown-stop {
+                color: #ff6b6b;
+            }
+
+            .shutdown-info {
+                color: #87ceeb;
+            }
+
+            .shutdown-warn {
+                color: #ffaa00;
+            }
+
+            .shutdown-final {
+                color: #ff4444;
+                font-weight: bold;
+                text-align: center;
+                margin-top: 2rem;
+                font-size: 1.2rem;
+            }
+        `;
+        document.head.appendChild(shutdownStyle);
+        document.body.appendChild(shutdownScreen);
+
+        const shutdownOutput = shutdownScreen.querySelector('.shutdown-output');
+
+        // Shutdown sequence messages
+        const shutdownMessages = [
+            { text: 'Stopping yusufdgn production environment...', delay: 500, class: 'shutdown-info' },
+            { text: '', delay: 200 },
+            { text: '[STOP ] Stopping Node.js application server...', delay: 300, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping Redis persistent key-value database...', delay: 200, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping PostgreSQL database server...', delay: 250, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping Docker Application Container Engine...', delay: 300, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping OpenSSH server daemon...', delay: 200, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping systemd-networkd...', delay: 150, class: 'shutdown-stop' },
+            { text: '[STOP ] Stopping Network Name Resolution...', delay: 150, class: 'shutdown-stop' },
+            { text: '', delay: 300 },
+            { text: 'Unmounting filesystems...', delay: 400, class: 'shutdown-info' },
+            { text: 'Unmounting /home...', delay: 200 },
+            { text: 'Unmounting /var...', delay: 200 },
+            { text: 'Unmounting /tmp...', delay: 200 },
+            { text: 'Unmounting /usr...', delay: 250 },
+            { text: 'Unmounting /boot...', delay: 200 },
+            { text: '', delay: 300 },
+            { text: 'Deactivating swap...', delay: 300, class: 'shutdown-info' },
+            { text: 'Remounting root filesystem read-only...', delay: 400, class: 'shutdown-info' },
+            { text: '', delay: 500 },
+            { text: 'Shutting down network interfaces...', delay: 300 },
+            { text: 'Powering off CPU cores...', delay: 400 },
+            { text: 'Stopping system clock...', delay: 300 },
+            { text: '', delay: 600 },
+            { text: '💻 Profile system offline.', delay: 400, class: 'shutdown-info' },
+            { text: '🔌 yusufdgn production environment stopped.', delay: 400, class: 'shutdown-info' },
+            { text: '', delay: 800 },
+            { text: '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', delay: 600, class: 'shutdown-final' },
+            { text: '        SYSTEM HALTED        ', delay: 400, class: 'shutdown-final' },
+            { text: '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', delay: 200, class: 'shutdown-final' },
+            { text: '', delay: 400 },
+            { text: 'It is now safe to power off your computer.', delay: 600, class: 'shutdown-info' },
+            { text: '', delay: 200 },
+            { text: '⚡ System powered down.', delay: 400, class: 'shutdown-final' }
+        ];
+
+        let messageIndex = 0;
+
+        function showNextShutdownMessage() {
+            if (messageIndex < shutdownMessages.length) {
+                const message = shutdownMessages[messageIndex];
+                
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = `shutdown-line ${message.class || ''}`;
+                    line.textContent = message.text;
+                    shutdownOutput.appendChild(line);
+                    
+                    // Auto scroll
+                    shutdownOutput.scrollTop = shutdownOutput.scrollHeight;
+                    
+                    messageIndex++;
+                    showNextShutdownMessage();
+                }, message.delay);
+            }
+            // No finishShutdown - system stays halted!
+        }
+
+        showNextShutdownMessage();
+    }
+
+ 
 }); 
