@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isCommand) {
             const commandLine = document.createElement('div');
             commandLine.className = 'terminal-line';
-            commandLine.innerHTML = `<span class="prompt">yusufdgn@dogan:~$</span> <span class="command">${text}</span>`;
+            commandLine.innerHTML = `<span class="prompt">yusuf@dogan:~$</span> <span class="command">${text}</span>`;
             terminalContent.appendChild(commandLine);
         } else {
             const outputLine = document.createElement('div');
