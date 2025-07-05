@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'contact':
                 addTerminalOutput('İletişim Bilgileri:');
                 addTerminalOutput('  LinkedIn: tr.linkedin.com/in/yusufdgn');
-                addTerminalOutput('  GitHub: github.com/yusufdgn');
+                addTerminalOutput('  GitHub: github.com/yusufdogan');
                 addTerminalOutput('  Instagram: instagram.com/yusufdgn');
                 break;
                 
@@ -243,8 +243,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             case 'github':
                 addTerminalOutput('GitHub profiline yönlendiriliyor...');
-                addTerminalOutput('🔗 https://github.com/yusufdgn');
-                window.open('https://github.com/yusufdgn', '_blank');
+                addTerminalOutput('🔗 https://github.com/yusufdogan');
+                window.open('https://github.com/yusufdogan', '_blank');
                 break;
                 
             // Easter Eggs
