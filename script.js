@@ -176,6 +176,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 addTerminalOutput('  about     - Detaylı bilgi');
                 addTerminalOutput('  contact   - İletişim bilgileri');
                 addTerminalOutput('  social    - Sosyal medya hesapları');
+                addTerminalOutput('  instagram - Instagram profilini aç');
+                addTerminalOutput('  linkedin  - LinkedIn profilini aç');
+                addTerminalOutput('  github    - GitHub profilini aç');
                 addTerminalOutput('  clear     - Terminali temizler');
                 addTerminalOutput('  date      - Tarih ve saat');
                 addTerminalOutput('  pwd       - Mevcut dizin');
@@ -226,6 +229,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             case 'ls':
                 addTerminalOutput('about.txt  contact.json  portfolio.md  README.md');
+                break;
+                
+            case 'instagram':
+                addTerminalOutput('Instagram profiline yönlendiriliyor...');
+                addTerminalOutput('🔗 https://www.instagram.com/yusufdgn');
+                window.open('https://www.instagram.com/yusufdgn', '_blank');
+                break;
+                
+            case 'linkedin':
+                addTerminalOutput('LinkedIn profiline yönlendiriliyor...');
+                addTerminalOutput('🔗 https://tr.linkedin.com/in/yusufdgn');
+                window.open('https://tr.linkedin.com/in/yusufdgn', '_blank');
+                break;
+                
+            case 'github':
+                addTerminalOutput('GitHub profiline yönlendiriliyor...');
+                addTerminalOutput('🔗 https://github.com/yusufdgn');
+                window.open('https://github.com/yusufdgn', '_blank');
                 break;
                 
             // Easter Eggs
