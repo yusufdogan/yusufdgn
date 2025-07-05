@@ -207,8 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             case 'social':
                 addTerminalOutput('Sosyal Medya:');
-                addTerminalOutput('  🔗 LinkedIn: https://tr.linkedin.com/in/yusufdgn');
-                addTerminalOutput('  💻 GitHub: https://github.com/yusufdgn');
                 addTerminalOutput('  📸 Instagram: https://www.instagram.com/yusufdgn');
                 break;
                 
