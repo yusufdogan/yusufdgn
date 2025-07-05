@@ -703,92 +703,447 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
     .view-toggle {
         top: 10px;
         left: 10px;
+        gap: 5px;
+        padding: 4px;
         background: rgba(0, 0, 0, 0.9);
         border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 40px;
     }
     
     .toggle-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
         background: rgba(255, 255, 255, 0.25);
         border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Terminal View Mobile */
+    #terminalView {
+        padding: 5px;
+        align-items: flex-start;
+        padding-top: 65px;
+    }
+
+    .terminal-window {
+        width: 100%;
+        max-width: 100%;
+        height: calc(100vh - 75px);
+        max-height: calc(100vh - 75px);
+        margin: 0;
+        border-radius: 8px;
+    }
+
+    .terminal-header {
+        padding: 8px 12px;
+    }
+
+    .terminal-title {
+        font-size: 11px;
+    }
+
+    .terminal-buttons .terminal-btn {
+        width: 10px;
+        height: 10px;
+    }
+
+    .terminal-content {
+        font-size: 11px;
+        padding: 10px;
+        line-height: 1.6;
+    }
+
+    .terminal-input-line {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .terminal-line {
+        margin: 4px 0;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .prompt {
+        font-size: 10px;
+    }
+
+    .command {
+        font-size: 11px;
+    }
+
+    .terminal-output {
+        margin: 5px 0 10px 0;
+        padding-left: 8px;
+        font-size: 10px;
+    }
+
+    /* Modern View Mobile */
+    .modern-header {
+        padding: 12px 0;
     }
     
     .navbar {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .nav-brand h1 {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
     }
     
     .nav-links {
-        gap: 1rem;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .hero-section {
+        padding: 50px 0 30px;
     }
     
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 25px;
         text-align: center;
     }
     
-    .hero-text h1,
+    .hero-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
     .hero-text h2 {
-        font-size: 2.5rem;
+        font-size: 1.3rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
     }
     
     .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .profile-card {
+        padding: 18px;
+        margin: 0 auto;
+    }
+
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .profile-info p {
+        font-size: 0.9rem;
+    }
+
+    .social-links a {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .about-section,
+    .contact-section {
+        padding: 35px 0;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
     }
     
     .about-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 25px;
+    }
+
+    .about-text p,
+    .about-text-center p {
+        font-size: 0.95rem;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .contact-link {
+        padding: 10px 16px;
+        font-size: 13px;
     }
     
     .footer-content {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
         text-align: center;
     }
-    
-    .terminal-window {
-        margin: 10px;
-        height: calc(100vh - 20px);
-        max-height: calc(100vh - 20px);
+
+    .footer-info h3 {
+        font-size: 1.3rem;
     }
-    
-    .terminal-content {
-        font-size: 12px;
-        padding: 15px;
-    }
-    
-    .terminal-input-line {
-        padding: 12px 15px;
+
+    .footer-info p {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-text h1,
-    .hero-text h2 {
-        font-size: 2rem;
+    .container {
+        padding: 0 10px;
+    }
+
+    .view-toggle {
+        top: 8px;
+        left: 8px;
+        gap: 3px;
+        padding: 3px;
     }
     
+    .toggle-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
 
-    
+    /* Terminal View Small Mobile */
+    #terminalView {
+        padding: 3px;
+        padding-top: 50px;
+    }
+
+    .terminal-window {
+        height: calc(100vh - 55px);
+        max-height: calc(100vh - 55px);
+        border-radius: 5px;
+    }
+
+    .terminal-header {
+        padding: 6px 8px;
+    }
+
+    .terminal-title {
+        font-size: 9px;
+    }
+
+    .terminal-buttons .terminal-btn {
+        width: 8px;
+        height: 8px;
+    }
+
     .terminal-content {
-        padding: 10px;
+        font-size: 10px;
+        padding: 8px;
+        line-height: 1.5;
+    }
+
+    .terminal-input-line {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .terminal-line {
+        margin: 2px 0;
+        gap: 3px;
+    }
+
+    .prompt {
+        font-size: 9px;
+    }
+
+    .command {
+        font-size: 10px;
+    }
+
+    .terminal-output {
+        margin: 3px 0 6px 0;
+        padding-left: 6px;
+        font-size: 9px;
+    }
+
+    /* Modern View Small Mobile */
+    .nav-brand h1 {
+        font-size: 1.5rem;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .hero-section {
+        padding: 40px 0 25px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .hero-buttons {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .profile-card {
+        padding: 15px;
+    }
+
+    .profile-avatar {
+        width: 75px;
+        height: 75px;
+    }
+
+    .profile-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .profile-info p {
+        font-size: 0.8rem;
+    }
+
+    .social-links a {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .about-section,
+    .contact-section {
+        padding: 25px 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .about-text p,
+    .about-text-center p {
+        font-size: 0.85rem;
+    }
+
+    .contact-link {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .footer-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .footer-info p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    #terminalView {
+        padding-top: 55px;
+    }
+
+    .terminal-window {
+        height: calc(100vh - 60px);
+        max-height: calc(100vh - 60px);
+    }
+
+    .hero-section {
+        padding: 30px 0 20px;
+    }
+
+    .about-section,
+    .contact-section {
+        padding: 25px 0;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+    .view-toggle {
+        top: 5px;
+        left: 5px;
+    }
+
+    .toggle-btn {
+        width: 26px;
+        height: 26px;
         font-size: 11px;
     }
-    
-    .terminal-input-line {
-        padding: 10px;
-    }
-    
 
+    #terminalView {
+        padding-top: 45px;
+    }
+
+    .terminal-window {
+        height: calc(100vh - 50px);
+        max-height: calc(100vh - 50px);
+    }
+
+    .hero-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .about-text p,
+    .about-text-center p {
+        font-size: 0.8rem;
+    }
 }
 
 /* Smooth Animations */
