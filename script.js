@@ -788,10 +788,10 @@ document.addEventListener('DOMContentLoaded', function() {
             { text: '  Memory usage: 23%               IPv4 address for eth0: 192.168.1.100', delay: 100 },
             { text: '  Swap usage:   0%', delay: 100 },
             { text: '', delay: 500 },
-            { text: '🚀 yusufdgn production environment ready!', delay: 300, class: 'boot-ok' },
+            { text: '🚀 yusufdogan production environment ready!', delay: 300, class: 'boot-ok' },
             { text: '💻 Profile system online!', delay: 200, class: 'boot-ok' },
             { text: '', delay: 400 },
-            { text: 'yusuf@yusufdgn-profile:~$ ', delay: 500, class: 'boot-info' }
+            { text: 'yusuf@dogan-profile:~$ ', delay: 500, class: 'boot-info' }
         ];
 
         let messageIndex = 0;
