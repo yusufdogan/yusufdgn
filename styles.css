@@ -218,7 +218,7 @@ body {
     border: none;
     color: #22c55e;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-size: 16px; /* Prevent zoom on iOS Safari */
     outline: none;
     flex: 1;
     caret-color: #4F46E5;
@@ -730,15 +730,22 @@ body {
         padding: 5px;
         align-items: flex-start;
         padding-top: 65px;
+        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic viewport height for modern browsers */
     }
 
     .terminal-window {
         width: 100%;
         max-width: 100%;
         height: calc(100vh - 75px);
+        height: calc(100dvh - 75px); /* Dynamic viewport height */
         max-height: calc(100vh - 75px);
+        max-height: calc(100dvh - 75px);
         margin: 0;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
     .terminal-header {
@@ -758,11 +765,21 @@ body {
         font-size: 11px;
         padding: 10px;
         line-height: 1.6;
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 60px; /* Space for input line */
     }
 
     .terminal-input-line {
         padding: 8px 10px;
-        font-size: 11px;
+        font-size: 16px; /* Prevent zoom on iOS Safari */
+        position: sticky;
+        bottom: 0;
+        background: #1e1e1e;
+        border-top: 1px solid #333;
+        z-index: 10;
+        flex-shrink: 0;
     }
 
     .terminal-line {
@@ -940,12 +957,19 @@ body {
     #terminalView {
         padding: 3px;
         padding-top: 50px;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .terminal-window {
         height: calc(100vh - 55px);
+        height: calc(100dvh - 55px);
         max-height: calc(100vh - 55px);
+        max-height: calc(100dvh - 55px);
         border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
     .terminal-header {
@@ -965,11 +989,21 @@ body {
         font-size: 10px;
         padding: 8px;
         line-height: 1.5;
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 50px; /* Space for input line */
     }
 
     .terminal-input-line {
         padding: 6px 8px;
-        font-size: 10px;
+        font-size: 16px; /* Prevent zoom on iOS Safari */
+        position: sticky;
+        bottom: 0;
+        background: #1e1e1e;
+        border-top: 1px solid #333;
+        z-index: 10;
+        flex-shrink: 0;
     }
 
     .terminal-line {
@@ -1089,11 +1123,18 @@ body {
 @media (max-width: 768px) and (orientation: landscape) {
     #terminalView {
         padding-top: 55px;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .terminal-window {
         height: calc(100vh - 60px);
+        height: calc(100dvh - 60px);
         max-height: calc(100vh - 60px);
+        max-height: calc(100dvh - 60px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
     .hero-section {
@@ -1121,11 +1162,18 @@ body {
 
     #terminalView {
         padding-top: 45px;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .terminal-window {
         height: calc(100vh - 50px);
+        height: calc(100dvh - 50px);
         max-height: calc(100vh - 50px);
+        max-height: calc(100dvh - 50px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
     .hero-text h1 {

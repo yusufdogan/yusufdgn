@@ -1,9 +1,71 @@
+// Mobile Virtual Keyboard Fix
+function setupMobileKeyboardFix() {
+    // Fix for iOS Safari virtual keyboard
+    const terminalInput = document.querySelector('.terminal-input');
+    const terminalWindow = document.querySelector('.terminal-window');
+    
+    if (terminalInput && terminalWindow) {
+        // When input gets focus (keyboard opens)
+        terminalInput.addEventListener('focus', function() {
+            if (isMobileDevice()) {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }, 300);
+            }
+        });
+
+        // When input loses focus (keyboard closes)
+        terminalInput.addEventListener('blur', function() {
+            if (isMobileDevice()) {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 300);
+            }
+        });
+
+        // Prevent zoom on double tap for input
+        terminalInput.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        });
+
+        // Handle viewport resize (keyboard open/close)
+        let initialViewportHeight = window.innerHeight;
+        window.addEventListener('resize', function() {
+            if (isMobileDevice()) {
+                const currentHeight = window.innerHeight;
+                const isKeyboardOpen = currentHeight < initialViewportHeight * 0.75;
+                
+                if (isKeyboardOpen) {
+                    // Keyboard is open - ensure input is visible
+                    setTimeout(() => {
+                        terminalInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                } else {
+                    // Keyboard is closed - reset scroll
+                    initialViewportHeight = currentHeight;
+                }
+            }
+        });
+    }
+}
+
+// Detect mobile device
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(navigator.platform));
+}
+
 // View Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const terminalBtn = document.getElementById('terminalBtn');
     const modernBtn = document.getElementById('modernBtn');
     const terminalView = document.getElementById('terminalView');
     const modernView = document.getElementById('modernView');
+
+    // Setup mobile keyboard fix
+    setupMobileKeyboardFix();
 
     // Initialize with terminal view
     showTerminalView();
@@ -58,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add welcome message
         addTerminalOutput('Yusuf Doğan\'ın kişisel terminal\'ine hoş geldiniz!');
+        addTerminalOutput('yusufdgn production environment ready');
         addTerminalOutput('Komutları görmek için "help" yazın.');
         addTerminalOutput('');
         
@@ -87,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isCommand) {
             const commandLine = document.createElement('div');
             commandLine.className = 'terminal-line';
-            commandLine.innerHTML = `<span class="prompt">yusufdgn@portfolio:~$</span> <span class="command">${text}</span>`;
+            commandLine.innerHTML = `<span class="prompt">yusufdgn@dogan:~$</span> <span class="command">${text}</span>`;
             terminalContent.appendChild(commandLine);
         } else {
             const outputLine = document.createElement('div');
@@ -158,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
                 
             case 'pwd':
-                addTerminalOutput('/home/yusufdgn/portfolio');
+                addTerminalOutput('/home/yusufdgn/profile');
                 break;
                 
             case 'ls':
